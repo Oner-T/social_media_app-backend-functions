@@ -6,7 +6,7 @@ const FBAuth = require("./util/fbAuth");
 
 
 const { getAllScreams, postOneScream } = require("./handlers/screams");
-const {signup, login} = require("./handlers/users");
+const {signup, login, uploadImage} = require("./handlers/users");
 
 
  // const firebase = require("firebase");
@@ -20,7 +20,7 @@ app.post("/scream", FBAuth, postOneScream);
 //users routes
 app.post("/signup", signup);
 app.post("/login", login);
-app.post("/users/image", uploadImage)
+app.post("/users/image", FBAuth, uploadImage)
 
 
 exports.api = functions.region("europe-west2").https.onRequest(app);
